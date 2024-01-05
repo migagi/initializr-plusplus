@@ -38,4 +38,4 @@ jobs:
         with:
           artifacts: "./target/initializr-plusplus-osx-x86_64,LICENSE"
           allowUpdates: true
-          token: ${{ ecrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
