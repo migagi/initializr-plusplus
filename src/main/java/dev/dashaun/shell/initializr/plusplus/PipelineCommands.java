@@ -71,7 +71,7 @@ public class PipelineCommands {
 				          docker-username: DOCKER_LOGIN
 				          docker-password: DOCKERHUB_PASSWORD
 				      - docker/push:
-				          image: dashaun/$CIRCLE_PROJECT_REPONAME
+				          image: migagi/$CIRCLE_PROJECT_REPONAME
 				          tag: $CIRCLE_TAG-aarch_64
 
 				workflows:
@@ -79,7 +79,7 @@ public class PipelineCommands {
 				    jobs:
 				      - arm64-native:
 				          context:
-				            - dashaun-dockerhub
+				            - migagi-dockerhub
 				          filters:
 				            tags:
 				              only: /^v.*/
@@ -98,7 +98,7 @@ public class PipelineCommands {
 				      - "v*"
 
 				env:
-				  IMAGE_NAME: dashaun/${GITHUB_REPOSITORY#*/}
+				  IMAGE_NAME: migagi/${GITHUB_REPOSITORY#*/}
 
 				jobs:
 				  build:
@@ -110,7 +110,7 @@ public class PipelineCommands {
 				      - name: Login to DockerHub
 				        uses: docker/login-action@v2
 				        with:
-				          username: dashaun
+				          username: migagi
 				          password: ${{ secrets.DOCKERHUB_TOKEN }}
 				      - uses: actions/setup-java@v2
 				        with:
@@ -135,7 +135,7 @@ public class PipelineCommands {
 				      - name: Login to DockerHub
 				        uses: docker/login-action@v2
 				        with:
-				          username: dashaun
+				          username: migagi
 				          password: ${{ secrets.DOCKERHUB_TOKEN }}
 				      - name: pull-arm64
 				        uses: nick-fields/retry@v2
